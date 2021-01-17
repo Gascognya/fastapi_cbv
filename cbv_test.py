@@ -1,6 +1,6 @@
 from typing import ClassVar
 from fastapi import Depends
-from .cbv import API, CBVRouter
+from cbv import API, CBVRouter
 
 
 def dependency(num: int) -> int:
@@ -27,3 +27,11 @@ class TestClass:
     @router.method(response_model=bool)
     def post(self) -> bool:
         return hasattr(self, "cy")
+
+
+if __name__ == '__main__':
+    from fastapi import FastAPI
+    app = FastAPI()
+    app.include_router(router)
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=8888)

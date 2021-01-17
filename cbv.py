@@ -33,7 +33,7 @@ class CBVRouter(Router):
             redirect_slashes: bool = True,
             default: Optional[ASGIApp] = None,
             dependency_overrides_provider: Optional[Any] = None,
-            route_class: Type[APIRoute] = TempRoute or APIRouter,
+            route_class: Type[APIRoute] = TempRoute or APIRoute,
             default_response_class: Optional[Type[Response]] = None,
             on_startup: Optional[Sequence[Callable]] = None,
             on_shutdown: Optional[Sequence[Callable]] = None,
