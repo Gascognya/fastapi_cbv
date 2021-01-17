@@ -1,7 +1,7 @@
 import typing
 from starlette.responses import HTMLResponse
-from .cbv import WebSocketBase
-from .temp_router import TempRouter
+from cbv import WebSocketBase
+from temp_router import TempRouter
 
 router = TempRouter()
 
@@ -53,3 +53,11 @@ html = """
 @router.get("/")
 async def get():
     return HTMLResponse(html)
+
+
+if __name__ == '__main__':
+    from fastapi import FastAPI
+    app = FastAPI()
+    app.include_router(router)
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=8888)
